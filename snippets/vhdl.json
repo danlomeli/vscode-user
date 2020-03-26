@@ -1,0 +1,213 @@
+{
+	// Place your snippets for vhdl here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"ENTITY": {
+		"prefix": "ENTITY",
+		"body": [
+			"ENTITY ${1:entity_name} IS",
+			"\tGENERIC (",
+			"\t\tdepth: INTEGER := 8;)",
+			"\tPORT (\t-- Only part mandatory in entity but empty allowed",
+			"\t\tclk : IN STD_LOGIC;",
+			"\t\trst : IN STD_LOGIC;",
+			"\t\t${2:data_in} : IN STD_LOGIC_VECTOR(depth-1 DOWNTO 0);",
+			"\t\t${3:data_out} : OUT STD_LOGIC_VECTOR(depth-1 DOWNTO 0);",
+			"END;"
+		],
+		"description": "Generic ENTITY template"
+	},
+	"ENTITY2": {
+		"prefix": "ENTITY EMPTY",
+		"body": [
+			"ENTITY ${1:entity_name} IS",
+			"\tPORT;",
+			"END;"
+		],
+		"description": "Empty ENTITY block"
+	},
+	"ARCHITECTURE": {
+		"prefix": "ARCHITECTURE",
+		"body": [
+			"ARCHITECTURE rtl of ${1:entity_name} IS",
+			"\t\t--component declarations and attribute specifications",
+			"\tBEGIN",
+			"\t\t--[architecture_statements_part]",
+			"\nEND ARCHITECTURE;"
+		],
+		"description": "Enabled ARCHITECTURE block with enable"
+	},
+	"LIBRARY": {
+		"prefix": "LIBRARY",
+		"body": [
+			"LIBRARY ${1:IEEE};",
+			"USE ${1:IEEE}.${2:std_logic_1164}.all;"
+		],
+		"description": "LIBRARY"
+	},
+	"PROCESS": {
+		"prefix": "PROCESS",
+		"body": [
+			"PROCESS (clk, rst)",
+			"-- IF, WAIT, LOOP, and CASE",
+			"\tBEGIN",
+			"\tIF (rst='1') THEN",
+			"\t\tq <= '0';",
+			"\tELSIF (clk'EVENT AND clk='1') THEN",
+			"\t\tq <= d;",
+			"\tEND IF;",
+			"END PROCESS;"
+		],
+		"description": "PROCESS"
+	},
+	"CONSTANT": {
+		"prefix": "CONSTANT",
+		"body": [
+			"CONSTANT ${1:name} : ${2:type} := ${3:value} --Declared in ENTITY, ARCHITECTURE, PACKAGE, PACKAGE BODY, BLOCK, GENERATE, PROCESS, FUNCTION",
+		],
+		"description": "CONSTANT"
+	},
+	"SIGNAL": {
+		"prefix": "SIGNAL",
+		"body": [
+			"SIGNAL ${1:name} : ${2:type} := ${0:value} --Declared in ENTITY, ARCHITECTURE, PACKAGE, BLOCK, and GENERATE",
+		],
+		"description": "SIGNAL"
+	},
+	"VARIABLE": {
+		"prefix": ">VARIABLE",
+		"body": [
+			"VARIABLE ${1:name} : ${2:type} := ${0:value} --Only seen and modified in a sequential unit PROCESS or subprogram",
+		],
+		"description": "VARIABLE"
+	},
+	"FILE": {
+		"prefix": ">FILE",
+		"body": [
+			"TYPE ${1:bit_file} IS FILE OF BIT;",
+			"FILE ${2:test_file}: ${1:bit_file} IS \"${2:test_file}.txt\";"
+		],
+		"description": "FILE"
+	},
+	"IEEE": {
+		"prefix": ">IEEE",
+		"body": [
+			"LIBRARY IEEE;  -- Remove if already defined",
+			"USE IEEE.STD_LOGIC_1164.ALL;      --  basic \"resolved\" package",
+			"USE IEEE.STD_LOGIC_$1SIGNED.ALL;  --  arithmetic, comparison, and shift",
+		],
+		"description": "Add IEEE libraries"
+	},
+	"numeric_unsigned": {
+		"prefix": ">NUMERIC_STD_UNSIGED",
+		"body": [
+			"USE IEEE.NUMERIC_STD_UNSIGED.ALL;  --  VHDL 2008",
+		],
+		"description": "Add the unsigned Numeric STD library"
+	},
+	"numeric": {
+		"prefix": ">NUMERIC_STD",
+		"body": [
+			"USE IEEE.NUMERIC_STD_UNSIGED.ALL;  --  Standard IEEE SIGNED and UNSIGNED library",
+		],
+		"description": "Add the Numeric STD Library"
+	},
+	"ARRAY": {
+		"prefix": ">ARRAY",
+		"body": [
+			"TYPE UNSIGNED IS ARRAY (NATURAL RANGE <>) OF STD_LOGIC;",
+		],
+		"description": "Create an array of type STD_LOGIC"
+	},
+	"ENUM": {
+		"prefix": ">Enum",
+		"body": [
+			"TYPE enum_column IS ('a', 'b', 'c', 'd');"
+		],
+		"description": "Create an enumerated type"
+	},
+	"RECORD": {
+		"prefix": ">RECORD",
+		"body": [
+			"TYPE pair IS RECORD",
+			"\ta, b: NATURAL RANGE 0 TO 7;",
+			"END RECORD;",
+		],
+		"description": "Create a record"
+	},
+	"SUBTYPE": {
+		"prefix": ">SUBTYPE",
+		"body": [
+			"SUBTYPE NATURAL IS INTEGER RANGE 0 TO INTEGER'HIGH; -- operations allowed between subtype and type derived from"
+		],
+		"description": "Create a subtype"
+	},
+	"ENCODING": {
+		"prefix": ">ENCODING",
+		"body": [
+			"ATTRIBUTE enum_encoding: STRING; -- also fsm_state is equivalent",
+			"--Result: A=\"11\", B=\"00\", C=\"10\", D=\"01\"",
+			"ATTRIBUTE enum_encoding OF state: TYPE IS \"11 00 10 01\";",
+		],
+		"description": "Create encoding"
+	},
+	"ATTRIBUTE": {
+		"prefix": ">ATTRIBUTE",
+		"body": [
+			"ATTRIBUTE ${1|keep,noprune,preserve|}: ${2:signal}; -- noprune and preserve for keeping Redundant Registers"
+		],
+		"description": "Create an attribute"
+	},
+	"WHEN": {
+		"prefix": ">WHEN",
+		"body": [
+			"x <= '0' WHEN rst='0' ELSE",
+			"\t'1' WHEN a='0' OR b='1' ELSE -- AND, OR, NOT accepted",
+			"\t'-'; --don’t care to prevent latches",
+
+		],
+		"description": "Create WHEN mux"
+	},
+	"SELECT": {
+		"prefix": ">SELECT",
+		"body": [
+			"WITH test SELECT",
+			"\ty <= \"000\" WHEN 0 | 1, -- when test 0 or 1",
+			"\t  \"100\" WHEN 2 TO 5, -- when test 2-5",
+			"\t  \"Z--\" WHEN OTHERS;",
+		],
+		"description": "Create WHEN SELECT mux"
+	},
+	"FOR": {
+		"prefix": ">FOR",
+		"body": [
+			"FOR i IN 0 TO 5 LOOP",
+			"\tx(i) <= a(i) AND b(5-i);",
+			"\ty(0, i) <= c(i);",
+			"END LOOP;",			
+		],
+		"description": "Create a for loop"
+	},
+	"CASE": {
+		"prefix": ">CASE",
+		"body": [
+			"CASE control IS  -- create combinational in a PROCESS",
+			"\tWHEN \"000\" => x<=a; y<=b;",
+			"\tWHEN \"000\" | \"111\" => x<=b; y<= '0';",
+			"\tWHEN OTHERS => x<='0'; y<='1';",
+			"END CASE;",						
+		],
+		"description": "Create a case"
+	}
+}
