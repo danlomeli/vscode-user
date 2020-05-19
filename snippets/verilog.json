@@ -15,17 +15,17 @@
 
 		
 	"always w reset en": {
-		"prefix": "always",
+		"prefix": "always en",
 		"body": [
 			"reg $1;",
 			"",
 			"always @(posedge clk) if ($2) $1 <= $3;"
 		],
-		"description": "Enabled always block"
+		"description": "With enabled always block"
 	},
 
 	"always no reset wo en": {
-		"prefix": "always en",
+		"prefix": "always",
 		"body": [
 			"reg $1;",
 			"",
@@ -34,26 +34,26 @@
 		"description": "Without enable always block"
 	},
 
-	"always async reset w en": {
-		"prefix": "always",
+	"always reset w en": {
+		"prefix": "always rst en",
 		"body": [
 			"reg $1;",
 			"",
-			"always @(posedge clk or negedge reset_n) if (!reset_n) $1 <= 0; else if ($2) $1 <= $3;"
+			"always @(posedge clk) if (!reset_n) $1 <= 0; else if ($2) $1 <= $3;"
 		
 		],
-		"description": "Asynchronous always block with enabled"
+		"description": "Reset with enabled"
 	},
 	
 	"always async reset wo en": {
-		"prefix": "always",
+		"prefix": "always rst",
 		"body": [
 			"reg $1;",
 			"",
-			"always @(posedge clk or negedge reset_n) if (!reset_n) $1 <= 0; else $1 <= $2;"
+			"always @(posedge clk) if (!reset_n) $1 <= 0; else $1 <= $2;"
 		
 		],
-		"description": "Asynchronous Reset wo Enabled always block"
+		"description": "Reset without enable"
 	},
 	
 	"fsm": {
