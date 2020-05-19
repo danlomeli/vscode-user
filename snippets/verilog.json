@@ -14,30 +14,30 @@
 	// }
 
 		
-	"always no reset en": {
+	"always w reset en": {
 		"prefix": "always",
 		"body": [
-			"logic $1;",
+			"reg $1;",
 			"",
 			"always @(posedge clk) if ($2) $1 <= $3;"
 		],
-		"description": "Enabled always block with enable"
+		"description": "Enabled always block"
 	},
 
 	"always no reset wo en": {
-		"prefix": "always",
+		"prefix": "always en",
 		"body": [
-			"logic $1;",
+			"reg $1;",
 			"",
 			"always @(posedge clk) $1 <= $2;"
 		],
-		"description": "Enabled always block without enable"
+		"description": "Without enable always block"
 	},
 
 	"always async reset w en": {
 		"prefix": "always",
 		"body": [
-			"logic $1;",
+			"reg $1;",
 			"",
 			"always @(posedge clk or negedge reset_n) if (!reset_n) $1 <= 0; else if ($2) $1 <= $3;"
 		
@@ -48,7 +48,7 @@
 	"always async reset wo en": {
 		"prefix": "always",
 		"body": [
-			"logic $1;",
+			"reg $1;",
 			"",
 			"always @(posedge clk or negedge reset_n) if (!reset_n) $1 <= 0; else $1 <= $2;"
 		
@@ -63,8 +63,8 @@
 			"localparam RUN  = 5'b1_1_01_0;",
 			"localparam END  = 5'b0_1_00_0;",
 			"",
-			"logic en0, en1, en2;",
-			"logic [4:0]   state, state_nxt;",
+			"reg en0, en1, en2;",
+			"reg [4:0]   state, state_nxt;",
 			"",
 			"always @(posedge clk or negedge reset_n)",
 			"  if (!reset_n) state <= IDLE;",

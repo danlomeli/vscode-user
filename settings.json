@@ -4,8 +4,11 @@
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
-    "verilog.linting.linter": "verilator",
-    "verilog.linting.verilator.arguments": "-sv --error-limit 1000 --lint-only -Werror-WIDTH -Werror-UNUSED -Wwarn-WIDTH -Wwarn-UNUSED ",
+    "verilog.linting.linter" : "modelsim",
+    "verilog.linting.modelsim.arguments" : "-sv -warning error -lint",
+    // "verilog.linting.linter": "verilator",
+    // "verilog.linting.verilator.arguments": "-sv --error-limit 1000 --lint-only -Werror-WIDTH -Werror-UNUSED -Wwarn-WIDTH -Wwarn-UNUSED -I/home/daniel/playground/scheduler_1_0/hdl",
+    "verilog.logging.enabled": true,
     "python.linting.flake8Args": [
         "--max-line-length=120",
         "--ignore=E402,F841,F401,E302,E305,E221,E226,E266",
@@ -15,6 +18,7 @@
     "files.associations": {
         "*.xdc": "tcl",
         "*.txt": "plaintext",
-        "*.prj": "tcl"
+        "*.prj": "tcl",
+        "*.veo": "systemverilog"
     }
 }
