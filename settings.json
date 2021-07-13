@@ -1,13 +1,16 @@
 {
+    "files.trimTrailingWhitespace": true,
     "telemetry.enableTelemetry": false,
-
+    "editor.largeFileOptimizations": false,
+    "code-eol.highlightExtraWhitespace": true,
+    "editor.renderWhitespace": "all",
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
     "verilog.linting.linter" : "modelsim",
     "verilog.linting.modelsim.arguments" : "-sv -warning error -lint",
     // "verilog.linting.linter": "verilator",
-    // "verilog.linting.verilator.arguments": "-sv --error-limit 1000 --lint-only -Werror-WIDTH -Werror-UNUSED -Wwarn-WIDTH -Wwarn-UNUSED -I/home/daniel/playground/scheduler_1_0/hdl",
+    // "verilog.linting.verilator.arguments": "-sv --assert --error-limit 1000 --lint-only -Wno-WIDTH -Wno-UNUSED +1800-2005ext+sva",
     "verilog.logging.enabled": true,
     "python.linting.flake8Args": [
         "--max-line-length=120",
@@ -19,6 +22,22 @@
         "*.xdc": "tcl",
         "*.txt": "plaintext",
         "*.prj": "tcl",
-        "*.veo": "systemverilog"
+        "*.veo": "systemverilog",
+        "*.svh": "systemverilog",
+        "*.jou": "tcl",
+        "*.do": "tcl"
+    },
+    "window.zoomLevel": 0,
+    "explorer.confirmDelete": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "security.workspace.trust.emptyWindow": false,
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "security.workspace.trust.startupPrompt": "never",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
     }
 }
