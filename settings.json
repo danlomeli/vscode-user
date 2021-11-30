@@ -27,7 +27,6 @@
         "*.jou": "tcl",
         "*.do": "tcl"
     },
-    "window.zoomLevel": 0,
     "explorer.confirmDelete": false,
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
@@ -39,5 +38,6 @@
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
-    }
+    },
+    "window.zoomLevel": 1
 }
