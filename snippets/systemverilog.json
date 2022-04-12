@@ -91,6 +91,7 @@
 	"module": {
 		"prefix": "module",
 		"body": [
+			"`begin_keywords \"1800-2005\"",
 			"`timescale 1 ns / 1 ps",
 			"",
 			"// Description",
@@ -100,7 +101,9 @@
 			"               input            reset_n",
 			");",
 			"",
-			"endmodule"
+			"endmodule",
+			"",
+			"`end_keywords"
 		],
 		"description": "Boilerplate module Template"
 	},

@@ -12,10 +12,18 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"If equal statement statement": {
-		"prefix": "if",
+	"Print to console": {
+		"prefix": "info",
 		"body": [
-			"if { $1 eq \"\" } {",
+			"common::send_msg_id \"EC_TCL-00$1\" \"INFO\" \"$2\""
+		],
+		"description": "Log output to console"
+	},
+
+	"If equal statement statement": {
+		"prefix": "if snip",
+		"body": [
+			"if { \\$$1 eq \"\" } {",
 			"",
 			"}"
 		],

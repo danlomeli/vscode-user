@@ -39,5 +39,7 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false
 }
